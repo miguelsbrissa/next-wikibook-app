@@ -1,0 +1,17 @@
+@import 'config'
+
+.nav
+    display: flex
+    align-items: center
+    justify-content: center
+    .menu_nav
+        display: flex
+        gap: 60px
+        &__item
+            font-size: 40px
+            text-decoration: none
+            color: $light
+            &:hover
+                color: $orange
+                @include transition-ease
+                

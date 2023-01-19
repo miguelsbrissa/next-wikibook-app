@@ -1,0 +1,49 @@
+@import 'config'
+
+.book
+    height: 100vh
+    background: linear-gradient(to right, rgba(#000000, 0.7), rgba(#000000, 0.3)), url('/img/janko-ferlic-sfL_QOnmy00-unsplash.jpg')
+    background-size: cover
+    display: flex
+    flex-direction: column
+    &__content
+        height: 80vh
+        background-color: rgba(#000, 0.7)
+        margin: 6rem 5rem 
+        border-radius: 2rem
+        display: flex
+        align-items: flex-start
+        justify-content: space-between
+    &__img
+        display: flex
+        align-items: center
+        justify-content: center
+        width: 40%
+        height: 100%
+    &__info
+        display: flex
+        flex-direction: column
+        justify-content: center
+        width: 60%
+        height: 100%
+        color: set-text-color($dark-gray)
+        gap: 1em
+        h1
+            font-size: 6em
+            font-weight: 700
+            margin: 0
+        h2
+            font-size: 3em
+            margin: 0
+        p
+            margin: 0
+            text-align: justify
+            margin-right: 1em
+            font-size: 2em
+        &__buy
+            display: flex
+            flex-direction: column
+            gap: 10px
+        &__stores
+            display: flex
+            gap: 10px
