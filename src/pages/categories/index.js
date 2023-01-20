@@ -18,10 +18,10 @@ export async function getStaticProps() {
     await db.connect()
 
     const cat = await Categorie.find().lean()
-    console.log(cat.map(db.convertDocToObj))
+    console.log(cat)
     return {
         props: {
-            data: cat.map(db.convertDocToObj)
+            data: cat.map(cate => db.convertDocToStr(cate))
         }
     }
 }
