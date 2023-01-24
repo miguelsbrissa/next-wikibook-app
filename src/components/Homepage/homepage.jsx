@@ -1,11 +1,10 @@
-import styles from '@/styles/Home.module.sass'
 import Menu from '@/components/Menu/menu'
 
 const Homepage = () => {
     return (
-        <main className={styles.home}>
+        <main className='home'>
             <Menu />
-            <div className={styles.content}>
+            <div className='content'>
                 <h1>
                     Find your next book and where you can buy it
                 </h1>
