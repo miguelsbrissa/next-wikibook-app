@@ -1,12 +1,56 @@
 @import 'config'
 
+.menu
+    position: absolute
+    z-index: 1
+    left: 1rem
+    top: 1rem
+    height: 20px
+    width: 28px
+    cursor: pointer
+    @include transition-ease
+    &__btn
+        position: absolute
+        left: 0
+        top: 0.5rem
+        width: 28px
+        height: 3px
+        background: $light
+        @include transition-ease
+
+        &::before
+            content: ''
+            position: absolute
+            top: -8px
+            width: 28px
+            height: 3px
+            background: $light
+
+        &::after
+            content: ''
+            position: absolute
+            top: 8px
+            width: 28px
+            height: 3px
+            background: $light
 .nav
-    display: flex
-    align-items: center
-    justify-content: center
+    position: fixed
+    top: 0
+    left: 0
+    width: 100vw
+    opacity: 0.98
     .menu_nav
         display: flex
-        gap: 60px
+        flex-flow: column wrap
+        align-items: center
+        justify-content: center
+        height: 100vh
+        overflow: hidden
+        background: $gray
+        list-style-type: none
+        padding-right: 1rem
+        transform: translateY(0)
+        @include transition-ease
         &__item
             font-size: 40px
             text-decoration: none
@@ -14,4 +58,24 @@
             &:hover
                 color: $orange
                 @include transition-ease
-                
+
+@include media-md
+    .menu
+        visibility: hidden
+    .nav
+        display: flex
+        align-items: center
+        justify-content: center
+        .menu_nav
+            display: flex
+            gap: 60px
+            background: transparent
+            flex-flow: nowrap
+            height: auto
+            &__item
+                font-size: 40px
+                text-decoration: none
+                color: $light
+                &:hover
+                    color: $orange
+                    @include transition-ease

@@ -4,7 +4,7 @@ import Menu from '../Menu/menu'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export const BookInfo = ({data}) => {
+export const BookInfo = ({ data }) => {
   return (
     <div className={styles.book}>
       <div className={styles.book__header}>
@@ -12,7 +12,7 @@ export const BookInfo = ({data}) => {
       </div>
       <div className={styles.book__content}>
         <div className={styles.book__img}>
-          <Image src={data.img} width={450} height={600} alt={'Dune'} />
+          <Image src={data.img} width={300} height={500} alt={'Dune'} />
         </div>
         <div className={styles.book__info}>
           <h1>{data.name}</h1>

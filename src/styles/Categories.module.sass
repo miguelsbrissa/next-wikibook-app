@@ -2,17 +2,30 @@
 
 .categories
     &__header
-        height: 15vh
+        height: 10vh
         background: linear-gradient(to right, rgba(#000000, 0.7), rgba(#000000, 0.3)), url('/img/janko-ferlic-sfL_QOnmy00-unsplash.jpg')
         background-size: cover
         display: flex
         flex-direction: column
     &__content
-        height: 100%
+        min-height: 100%
         display: grid
-        grid-template-columns: repeat(5, 1fr)
+        grid-template-columns: repeat(1, 1fr)
+        align-items: center
+        background-color: $dark-gray
         align-items: center
         justify-content: center
-        gap: 50px
-        padding: 50px 70px
-        background-color: $dark-gray
+        gap: 3rem
+        padding: 3rem 4rem
+
+@include media-lg
+    .categories
+        &__header
+            height: 15vh
+        &__content
+            grid-template-columns: repeat(2, 1fr)
+
+@include media-xl
+    .categories
+        &__content
+            grid-template-columns: repeat(4, 1fr)

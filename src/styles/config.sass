@@ -4,7 +4,7 @@ $gray: #403D39
 $ligth-gray: #CCC5B9
 $light: #FFFCF2
 // paleta de cores https://coolors.co/palette/fffcf2-ccc5b9-403d39-252422-eb5e28
-    
+
 @mixin transition-ease
     transition: all 0.5s ease-in-out
 
@@ -13,3 +13,15 @@ $light: #FFFCF2
         @return black
     @else
         @return white
+
+@mixin media-md
+    @media screen and (min-width: 768px)
+        @content
+
+@mixin media-lg
+    @media screen and (min-width: 1024px)
+        @content
+
+@mixin media-xl
+    @media screen and (min-width: 1600px)
+        @content

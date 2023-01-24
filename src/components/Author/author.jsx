@@ -12,7 +12,7 @@ export const Author = () => {
       </div>
       <div className={styles.author__content}>
         <div className={styles.author__img}>
-          <Image src={'/img/authors/frankherbert.jpg'} width={450} height={450} alt={'Dune'} />
+          <Image src={'/img/authors/frankherbert.jpg'} width={300} height={300} alt={'Dune'} />
         </div>
         <div className={styles.author__info}>
           <h1>Frank Herbert</h1>
