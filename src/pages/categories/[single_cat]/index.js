@@ -4,19 +4,20 @@ import Book from 'models/Book'
 import React from 'react'
 import db from "database/db"
 import Categorie from 'models/Categorie'
+import axios from 'axios'
 
-export default function SingleCat({data, pageName}) {
+export default function SingleCat({ data, pageName }) {
     return (
         <>
             <MyHead title={`Wikibook - ${pageName}`} />
-            <SingleCategorie data={data}/>
+            <SingleCategorie data={data} />
         </>
     )
 }
 
 export async function getStaticPaths() {
     await db.connect()
-    const cat = await Categorie.find().lean() 
+    const cat = await Categorie.find().lean()
 
     const allCatPaths = cat.map(path => {
         return {
@@ -25,7 +26,7 @@ export async function getStaticPaths() {
             }
         }
     })
-    console.log(allCatPaths)
+    //console.log(allCatPaths)
     return {
         paths: allCatPaths,
         fallback: false
@@ -37,12 +38,12 @@ export async function getStaticProps(context) {
     const allBooks = await Book.find().lean()
 
     const booksByCat = allBooks.filter(b => b.categorie === id)
-    console.log(allBooks)
+    //console.log(allBooks)
 
-    return{
-        props:{
+    return {
+        props: {
             data: booksByCat.map(book => db.convertDocToStr(book)),
-            pageName:id
+            pageName: id
         }
     }
 }
