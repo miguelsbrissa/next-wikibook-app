@@ -10,7 +10,7 @@ export const AdminLayout = ({ children }) => {
                     <Link className='sidenav__item' href={'/'}>User</Link>
                 </div>
                 <div className='sidenav__option' >Categories
-                    <Link className='sidenav__item' href={'/admin/categories'}>List</Link>
+                    <Link className='sidenav__item active' href={'/admin/categories'}>List</Link>
                     <Link className='sidenav__item' href={'/admin/categories/add'}>Add</Link>
                 </div>
                 <div className='sidenav__option' >Books

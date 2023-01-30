@@ -1,0 +1,34 @@
+@import 'config'
+
+.simplelist
+    border-collapse: collapse
+    margin: 1rem
+    font-family: Segoe UI
+    th
+        background-color: $orange
+        color: set-text-color($dark-gray)
+        font-family: Marvel
+        font-size: 1.5rem
+        font-weight: 700
+        border: 1px solid $dark-gray 
+        padding: 1rem
+    td
+        padding: 1rem
+        border: 1px solid $dark-gray 
+        font-size: 1rem
+    tr
+        &:hover
+            background-color: #ddd
+    &__btns
+        display: flex
+        align-items: center
+        justify-content: space-around
+    &__btn
+        border: none
+        padding: 1rem
+        border-radius: 1rem
+        background-color: $orange
+        &:hover
+            background-color: $selected-orange
+            @include transition-ease
+            
