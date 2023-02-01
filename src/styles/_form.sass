@@ -1,0 +1,49 @@
+@import 'config'
+.form
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    width: 100%
+    gap: 2rem
+
+    &__item
+        display: flex
+        flex-direction: column
+        gap: 0.5rem
+        width: 50%
+    &__label
+        font-size: 2.5rem
+        font-weight: 700
+        color: $orange
+    &__input
+        font-size: 1rem
+        border-radius: 0.5rem
+        padding: 15px
+        border: solid 2px
+        outline: none
+        &:focus
+            border: solid 2px $orange
+    &__inputArea
+        font-size: 1rem
+        border-radius: 0.5rem
+        padding: 5px
+        border: solid 2px
+        outline: none
+        height: 5rem
+        resize: none
+        &:focus
+            border: solid 2px $orange
+    &__btn
+        padding: 10px
+        font-size: 2rem
+        text-transform: uppercase
+        color: set-text-color($dark-gray)
+        border: none
+        border-radius: 0.5rem
+        background-color: $gray
+        cursor: pointer
+        @include transition-ease
+        &:hover
+            background-color: $dark-gray
+            @include transition-ease
