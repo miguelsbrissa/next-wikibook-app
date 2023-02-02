@@ -1,8 +1,11 @@
 import { AdminLayout } from '@/components/layout/adminLayout'
 import axios from 'axios'
-import React from 'react'
+import { useDebounce } from 'hooks/useDebouce'
+import React, { useEffect, useState } from 'react'
 
 export const Add = () => {
+    const [allBooks, setAllBooks] = useState([])
+    const { debounce } = useDebounce(10000)
     const handleSubmit = async (event) => {
         const data = {
             name: event.target.name.value,
@@ -16,6 +19,17 @@ export const Add = () => {
         await axios.post('http://localhost:3000/api/admin/books/', data)
 
     }
+
+    useEffect(() => {
+        debounce(() => {
+            async function getData() {
+                const res = await axios.get('http://localhost:3000/api/admin/categories/')
+                setAllBooks(res.data)
+            }
+            getData()
+        })
+    }, [allBooks])
+
     return (
         <AdminLayout>
             <form className='form' onSubmit={handleSubmit}>
@@ -35,7 +49,15 @@ export const Add = () => {
                 </div>
                 <div className='form__item'>
                     <label htmlFor='categorie' className='form__label'>Categorie</label>
-                    <input type={'text'} id='categorie' name='categorie' className='form__input' />
+                    
+                    <select id='categorie' name='categorie' className='form__select'>
+                        <option value={0}>Select a book</option>
+                        {
+                            allBooks.map((book, i) => (
+                                <option key={book.id} value={book.link}>{book.name}</option>
+                            ))
+                        }
+                    </select>
                 </div>
                 <div className='form__item'>
                     <label htmlFor='synopsis' className='form__label'>Synopsis</label>

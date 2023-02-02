@@ -1,24 +1,62 @@
 import React from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 export const AdminLayout = ({ children }) => {
+    const router = useRouter()
+    //const options = ['Categories', 'Books', 'Authors']
+    //const items = ['List', 'Add']
+    //const urls = ['/admin/categories', '/admin/books', '/admin/authors']
+
+    const menu = {
+        options: [
+            {
+                name: 'Categories',
+                items: ['List', 'Add'],
+                urls: ['/admin/categories', '/admin/categories/add']
+            },
+            {
+                name: 'Books',
+                items: ['List', 'Add'],
+                urls: ['/admin/books', '/admin/books/add']
+            },
+            {
+                name: 'Authors',
+                items: ['List', 'Add'],
+                urls: ['/admin/authors', '/admin/authors/add']
+            },
+        ]
+    }
     return (
         <div className='adminLayout'>
             <div className='sidenav'>
                 <div className='sidenav__option' >Home
-                    <Link className='sidenav__item' href={'/admin'}>Admin</Link>
+                    {
+                        router.pathname === '/admin' && (
+                            <Link className='sidenav__item active' href={'/admin'}>Admin</Link>
+                        )
+                    }
+                    {
+                        router.pathname !== '/admin' && (
+                            <Link className='sidenav__item' href={'/admin'}>Admin</Link>
+                        )
+                    }
                     <Link className='sidenav__item' href={'/'}>User</Link>
                 </div>
-                <div className='sidenav__option' >Categories
-                    <Link className='sidenav__item active' href={'/admin/categories'}>List</Link>
-                    <Link className='sidenav__item' href={'/admin/categories/add'}>Add</Link>
-                </div>
-                <div className='sidenav__option' >Books
-                    <Link className='sidenav__item' href={'/admin/books'}>List</Link>
-                    <Link className='sidenav__item' href={'/admin/books/add'}>Add</Link></div>
-                <div className='sidenav__option' >Authors
-                    <Link className='sidenav__item' href={'/admin/authors'}>List</Link>
-                    <Link className='sidenav__item' href={'/admin/authors/add'}>Add</Link></div>
+                {
+                    menu.options.map((opt, i) => (
+                        <div key={opt.name} className='sidenav__option'>{opt.name}
+                            {
+                                opt.items.map((item, i) => (
+                                    router.pathname === opt.urls[i] ?
+                                        <Link key={opt.name} className='sidenav__item active' href={opt.urls[i]}>{opt.items[i]}</Link>
+                                        :
+                                        <Link key={opt.name} className='sidenav__item' href={opt.urls[i]}>{opt.items[i]}</Link>
+                                ))
+                            }
+                        </div>
+                    ))
+                }
             </div>
 
             {children}
