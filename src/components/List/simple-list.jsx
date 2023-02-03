@@ -1,13 +1,35 @@
+import axios from 'axios'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import React from 'react'
 
 export const SimpleList = ({ data, type }) => {
-    const handleEdit = () => {
-        alert('Editar')
+    const router = useRouter()
+    const handleEdit = (id, type) => {
+        switch (type) {
+            case 'categories':
+                router.push(`http://localhost:3000/admin/categories/${id}`)
+                break;
+            case 'books':
+                router.push(`http://localhost:3000/admin/books/${id}`)
+                break;
+            case 'authors':
+                router.push(`http://localhost:3000/admin/authors/${id}`)
+                break;
+            default:
+                break;
+        }
     }
-    const handleDelete = () => {
-        alert('Deletar')
+    const handleDelete = async (id, name, type) => {
+        let del = confirm(`Are you sure you to delete ${name}?`)
+
+        if (del) {
+            const { data } = await axios.delete(`http://localhost:3000/api/admin/${type}/${id}`)
+            alert(data.message)
+            location.reload(true)
+        }
     }
+
     const bookH = ['Name', 'Image URL', 'Author', 'Categorie', 'Synopsis', 'URL']
     const catH = ['Name', 'URL', 'Image URL']
     const authorH = ['Name', 'Image URL', 'History', 'Books', 'URL']
@@ -46,8 +68,8 @@ export const SimpleList = ({ data, type }) => {
                             <td>{row.img}</td>
                             <td>
                                 <div className='simplelist__btns'>
-                                    <button className='simplelist__btn' onClick={() => handleEdit()}><Image src={'/img/edit.png'} width={30} height={30} /></button>
-                                    <button className='simplelist__btn' onClick={() => handleDelete()}><Image src={'/img/delete.png'} width={30} height={30} /></button>
+                                    <button className='simplelist__btn' onClick={() => handleEdit(row._id, 'categories')}><Image src={'/img/edit.png'} width={30} height={30} /></button>
+                                    <button className='simplelist__btn' onClick={() => handleDelete(row._id, row.name, 'categories')}><Image src={'/img/delete.png'} width={30} height={30} /></button>
                                 </div>
                             </td>
                         </tr>
@@ -66,8 +88,8 @@ export const SimpleList = ({ data, type }) => {
                             <td>{row.link}</td>
                             <td>
                                 <div className='simplelist__btns'>
-                                    <button className='simplelist__btn' onClick={() => handleEdit()}><Image src={'/img/edit.png'} width={30} height={30} /></button>
-                                    <button className='simplelist__btn' onClick={() => handleDelete()}><Image src={'/img/delete.png'} width={30} height={30} /></button>
+                                    <button className='simplelist__btn' onClick={() => handleEdit(row._id, 'books')}><Image src={'/img/edit.png'} width={30} height={30} /></button>
+                                    <button className='simplelist__btn' onClick={() => handleDelete(row._id, row.name, 'books')}><Image src={'/img/delete.png'} width={30} height={30} /></button>
                                 </div>
                             </td>
                         </tr>
@@ -85,8 +107,8 @@ export const SimpleList = ({ data, type }) => {
                             <td>{row.link}</td>
                             <td>
                                 <div className='simplelist__btns'>
-                                    <button className='simplelist__btn' onClick={() => handleEdit()}><Image src={'/img/edit.png'} width={30} height={30} /></button>
-                                    <button className='simplelist__btn' onClick={() => handleDelete()}><Image src={'/img/delete.png'} width={30} height={30} /></button>
+                                    <button className='simplelist__btn' onClick={() => handleEdit(row._id, 'authors')}><Image src={'/img/edit.png'} width={30} height={30} /></button>
+                                    <button className='simplelist__btn' onClick={() => handleDelete(row._id, row.name, 'authors')}><Image src={'/img/delete.png'} width={30} height={30} /></button>
                                 </div>
                             </td>
                         </tr>

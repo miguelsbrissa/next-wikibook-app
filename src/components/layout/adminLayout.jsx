@@ -4,9 +4,6 @@ import { useRouter } from 'next/router'
 
 export const AdminLayout = ({ children }) => {
     const router = useRouter()
-    //const options = ['Categories', 'Books', 'Authors']
-    //const items = ['List', 'Add']
-    //const urls = ['/admin/categories', '/admin/books', '/admin/authors']
 
     const menu = {
         options: [
