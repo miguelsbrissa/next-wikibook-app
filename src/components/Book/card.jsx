@@ -12,7 +12,7 @@ export const BookCard = ({data}) => {
         <Link href={`/categories/${data.categorie}/${data.link}`} className={'cardbook__btn'}>
           <p>View book</p>
         </Link>
-        <Link href={'/authors/single_author'} className={'cardbook__btn'}>
+        <Link href={`/authors/${data.author}`} className={'cardbook__btn'}>
           <p>View author</p>
         </Link>
       </div>

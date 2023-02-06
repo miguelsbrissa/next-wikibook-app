@@ -3,7 +3,7 @@ import Menu from '../Menu/menu'
 import Link from 'next/link'
 import Image from 'next/image'
 
-export const Author = () => {
+export const Author = ({data}) => {
   return (
     <div className={'author'}>
       <div className={'author__header'}>
@@ -11,15 +11,12 @@ export const Author = () => {
       </div>
       <div className={'author__content'}>
         <div className={'author__img'}>
-          <Image src={'/img/authors/frankherbert.jpg'} width={300} height={300} alt={'Dune'} />
+          <Image src={data.img} width={300} height={300} alt={'Dune'} />
         </div>
         <div className={'author__info'}>
-          <h1>Frank Herbert</h1>
+          <h1>{data.name}</h1>
           <h2>History</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris elementum vulputate massa ac malesuada.
-            Duis vitae egestas purus. Vivamus a magna odio. Suspendisse laoreet pretium velit eu cursus.
-            Maecenas feugiat erat eu mauris porta vulputate.
-            Vestibulum vitae accumsan quam. Nullam condimentum justo ante, in lobortis odio tristique at.</p>
+          <p>{data.history}</p>
           <div className={'author__buy'}>
             <h2>Books</h2>
             <div className={'author_stores'}>
